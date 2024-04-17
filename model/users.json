@@ -6,5 +6,9 @@
   {
     "username": "ajay",
     "password": "$2b$10$g//MBlmhJGMvdwunmO25meMMT5h4Ljjeu8NAbWdK8SA9xfvtpcTZq"
+  },
+  {
+    "username": "test--ajay",
+    "password": "$2b$10$07L1qByDgNOTleNWKkUaCemXlbHEq6HJJRYFCZesySOl160gNWi9."
   }
 ]
