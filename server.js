@@ -5,11 +5,18 @@ const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
 const { logger } = require("./middleware/logEvents");
 const { errorHandler } = require("./middleware/errorHandler");
+const verifyJWT = require("./middleware/verifyJWT");
+const cookieParser = require("cookie-parser");
+const credentials = require("./middleware/credentials");
 const PORT = process.env.PORT || 3000;
 require("dotenv").config();
 
 // custom middleware: log requests
 app.use(logger);
+
+// Handle options credentials check - before CORS!
+// and fetch cookies credentials requirement
+app.use(credentials);
 
 // third party middleware cors for allowing cross origin resource sharing
 app.use(cors(corsOptions));
@@ -22,6 +29,8 @@ app.use(express.urlencoded({ extended: false }));
 // built in middleware for json
 app.use(express.json());
 
+app.use(cookieParser());
+
 // serve static files to all the requests on "/" route
 // app.use("/", express.static(path.join(__dirname, "/public")));
 app.use(express.static(path.join(__dirname, "/public")));
@@ -30,6 +39,10 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.use("/", require("./routes/root"));
 app.use("/register", require("./routes/register"));
 app.use("/auth", require("./routes/auth"));
+app.use("/refresh", require("./routes/refresh"));
+app.use("/logout", require("./routes/logout"));
+
+app.use(verifyJWT);
 app.use("/employees", require("./routes/api/employees"));
 
 app.all("*", (req, res) => {

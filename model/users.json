@@ -10,5 +10,15 @@
   {
     "username": "test--ajay",
     "password": "$2b$10$07L1qByDgNOTleNWKkUaCemXlbHEq6HJJRYFCZesySOl160gNWi9."
+  },
+  {
+    "username": "Pawan Kumar",
+    "password": "$2b$10$.GXGCRoXJVpAnra6BY87sefrkwbS9LCIgyqJIC4jGt2QxZEIqOv6a",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlBhd2FuIEt1bWFyIiwiaWF0IjoxNzEzMzYwNzE0LCJleHAiOjE3MTM0NDcxMTR9.YYg9Rk4y848YrbtJFXPcytHMbBve_Fi36SCCsCY_8DY"
+  },
+  {
+    "username": "Ajay Kumar",
+    "password": "$2b$10$yq7tXhaA/GlCFmIXBtOuYeo36lNoPWluLxbheDr41cMv5wPuU8fMq",
+    "refreshToken": ""
   }
 ]
