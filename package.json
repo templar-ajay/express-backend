@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "express-server",
   "version": "1.0.0",
   "description": "Express tutorial",
   "main": "server.js",
