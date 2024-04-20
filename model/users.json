@@ -1,9 +1,23 @@
 [
   {
-    "username": "Pawan Kumar",
+    "username": "Admin",
+    "roles": {
+      "Admin": 5150
+    },
+    "password": "$2b$10$tmGS07ljY7cYWNrVIfpOI.LiCYIFrwF9CQ1FNhfO12unHXhYyYDBS"
+  },
+  {
+    "username": "SuperAdmin",
     "roles": {
       "SuperAdmin": 1420
     },
-    "password": "$2b$10$YioCbla//VqtswKdooaCR.JcPH7hHYRTqONG.qDfPOQpL7RP.clcG"
+    "password": "$2b$10$2eiK2OGW35s6NcWbbbUzveUVxu7KXNASQrJp97BJBFjIxeLZGhI4O"
+  },
+  {
+    "username": "User",
+    "roles": {
+      "User": 2001
+    },
+    "password": "$2b$10$4KRsmlLKK3.QK8VmIZglMOBadGajvt5yhWG5Oe/06VCiCug6rcxau"
   }
 ]
