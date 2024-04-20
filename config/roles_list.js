@@ -1,6 +1,6 @@
 const ROLES_LIST = {
+  SuperAdmin: 1420,
   Admin: 5150,
-  Editor: 1984,
   User: 2001,
 };
 

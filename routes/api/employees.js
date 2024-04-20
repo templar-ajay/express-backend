@@ -7,23 +7,17 @@ const verifyRoles = require("../../middleware/verifyRoles");
 router
   .route("/")
   .get(
-    verifyRoles(ROLES_LIST.Admin, ROLES_LIST.Editor, ROLES_LIST.User),
+    verifyRoles(ROLES_LIST.Admin, ROLES_LIST.User),
     employeesController.getAllEmployees
   )
-  .post(
-    verifyRoles(ROLES_LIST.Admin, ROLES_LIST.Editor),
-    employeesController.createNewEmployee
-  )
-  .put(
-    verifyRoles(ROLES_LIST.Admin, ROLES_LIST.Editor),
-    employeesController.updateEmployee
-  )
+  .post(verifyRoles(ROLES_LIST.Admin), employeesController.createNewEmployee)
+  .put(verifyRoles(ROLES_LIST.Admin), employeesController.updateEmployee)
   .delete(verifyRoles(ROLES_LIST.Admin), employeesController.deleteEmployee);
 
 router
   .route("/:id")
   .get(
-    verifyRoles(ROLES_LIST.Admin, ROLES_LIST.Editor, ROLES_LIST.User),
+    verifyRoles(ROLES_LIST.Admin, ROLES_LIST.User),
     employeesController.getEmployee
   );
 
