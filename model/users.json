@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "username": "Pawan Kumar",
+    "roles": {
+      "SuperAdmin": 1420
+    },
+    "password": "$2b$10$YioCbla//VqtswKdooaCR.JcPH7hHYRTqONG.qDfPOQpL7RP.clcG"
+  }
+]
