@@ -1,0 +1,24 @@
+[
+  {
+    "username": "Admin",
+    "role": {
+      "Admin": 5150
+    },
+    "password": "$2b$10$tmGS07ljY7cYWNrVIfpOI.LiCYIFrwF9CQ1FNhfO12unHXhYyYDBS"
+  },
+  {
+    "username": "User",
+    "role": {
+      "User": 2001
+    },
+    "password": "$2b$10$4KRsmlLKK3.QK8VmIZglMOBadGajvt5yhWG5Oe/06VCiCug6rcxau"
+  },
+  {
+    "username": "SuperAdmin",
+    "role": {
+      "SuperAdmin": 1420
+    },
+    "password": "$2b$10$2eiK2OGW35s6NcWbbbUzveUVxu7KXNASQrJp97BJBFjIxeLZGhI4O",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlN1cGVyQWRtaW4iLCJpYXQiOjE3MTM2NTExNjQsImV4cCI6MTcxMzczNzU2NH0.qa6_BwuXEcP0aqsUmuRptUutMED2QyQNt5ue46PsMn0"
+  }
+]

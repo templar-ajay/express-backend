@@ -1,11 +1,11 @@
 {
-  "name": "express-server",
+  "name": "scale-health-api",
   "version": "1.0.0",
-  "description": "Express tutorial",
+  "description": "Scale Health API",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
-    "dev": "nodemon server"
+    "start": "node src/server",
+    "dev": "nodemon src/server"
   },
   "author": "Ajay Kumar",
   "license": "ISC",
