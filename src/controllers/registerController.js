@@ -16,6 +16,13 @@ const handleNewUser = async (req, res) => {
     });
   }
 
+  // password length verification
+  if (!(pwd.length <= 40) || !(pwd.length > 8))
+    res.status(401).json({
+      error: "password should be from 8-40 characters",
+      field: "password",
+    });
+
   //check for duplicate users
   const duplicate = usersDB.users.find((_user) => _user.username === user);
   if (duplicate) {
