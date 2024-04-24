@@ -24,7 +24,7 @@ const handleLogin = async function (req, res) {
   }
   const foundUser = usersDB.users.find((_user) => _user.username === user);
   if (!foundUser) {
-    return res.sendStatus(401); // unauthorized
+    return res.status(401).json({ error: "user not found", field: "username" }); // unauthorized
   }
   // evaluate password
   const match = await bcrypt.compare(pwd, foundUser.password);
@@ -67,11 +67,11 @@ const handleLogin = async function (req, res) {
     );
     writeRefreshTokenToCookie({ res: res, refreshToken: refreshToken });
     writeAccessTokenToCookie({ res: res, accessToken: accessToken });
-    return res.json({
+    return res.status(200).json({
       message: "login successful, access token provided in cookie in header",
     });
   }
-  res.sendStatus(401);
+  res.status(401).json({ error: "wrong password", field: "password" });
 };
 
 module.exports = { handleLogin };
