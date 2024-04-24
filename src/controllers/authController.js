@@ -1,3 +1,7 @@
+import {
+  writeAccessTokenToCookie,
+  writeRefreshTokenToCookie,
+} from "../lib/utils";
 const usersDB = {
   users: require("../model/users.json"),
   setUsers: function (data) {
@@ -13,6 +17,8 @@ const path = require("path");
 
 const handleLogin = async function (req, res) {
   const { user, pwd } = req.body;
+  console.log("user", user);
+  console.log("pwd", pwd);
   if (!user || !pwd) {
     return res.status(400).json({ message: "user and pwd are required" });
   }
@@ -59,13 +65,11 @@ const handleLogin = async function (req, res) {
       path.join(__dirname, "..", "model", "users.json"),
       JSON.stringify(usersDB.users, null, 2)
     );
-    res.cookie("jwt", refreshToken, {
-      httpOnly: true,
-      sameSite: "None",
-      secure: true,
-      maxAge: 24 * 60 * 60 * 1000,
+    writeRefreshTokenToCookie({ res: res, refreshToken: refreshToken });
+    writeAccessTokenToCookie({ res: res, accessToken: accessToken });
+    return res.json({
+      message: "login successful, access token provided in cookie in header",
     });
-    return res.json({ accessToken });
   }
   res.sendStatus(401);
 };

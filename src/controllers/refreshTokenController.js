@@ -6,6 +6,7 @@ const usersDB = {
 };
 
 const jwt = require("jsonwebtoken");
+const { writeAccessTokenToCookie } = require("../lib/utils");
 require("dotenv").config();
 
 const handleRefreshToken = function (req, res) {
@@ -23,6 +24,7 @@ const handleRefreshToken = function (req, res) {
   if (!foundUser) {
     return res.sendStatus(403); // forbidden
   }
+
   jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
     if (err || foundUser.username !== decoded.username)
       return res.sendStatus(403);
@@ -38,9 +40,14 @@ const handleRefreshToken = function (req, res) {
         },
       },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: process.env.ACCESS_TOKEN_DURATION || "30s" }
+      { expiresIn: process.env.ACCESS_TOKEN_DURATION }
     );
-    res.json({ accessToken });
+
+    writeAccessTokenToCookie({ res: res, accessToken: accessToken });
+
+    return res.json({
+      message: "login successful, access token provided in cookie in header",
+    });
   });
 };
 
