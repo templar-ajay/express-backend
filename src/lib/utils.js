@@ -1,4 +1,4 @@
-const { ms } = require("date-fns/locale");
+const ms = require("ms");
 
 function writeAccessTokenToCookie({ res, accessToken }) {
   res.cookie("jwt-access", accessToken, {
