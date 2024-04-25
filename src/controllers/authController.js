@@ -1,6 +1,8 @@
 const {
   writeAccessTokenToCookie,
   writeRefreshTokenToCookie,
+  signAccessToken,
+  signRefreshToken,
 } = require("../lib/utils");
 const usersDB = {
   users: require("../model/users.json"),
@@ -33,27 +35,14 @@ const handleLogin = async function (req, res) {
     const foundUser_roleCode = Object.values(foundUser.role)[0];
 
     // create JWTs
-    const accessToken = jwt.sign(
-      {
-        UserInfo: {
-          username: foundUser.username,
-          role: foundUser_roleCode,
-        },
-      },
-      process.env.ACCESS_TOKEN_SECRET,
-      {
-        expiresIn: process.env.ACCESS_TOKEN_DURATION || "30s",
-      }
-    );
-    const refreshToken = jwt.sign(
-      {
-        username: foundUser.username,
-      },
-      process.env.REFRESH_TOKEN_SECRET,
-      {
-        expiresIn: "1d",
-      }
-    );
+    const accessToken = signAccessToken({
+      username: foundUser.username,
+      role: foundUser_roleCode,
+    });
+
+    const refreshToken = signRefreshToken({
+      username: foundUser.username,
+    });
 
     // save refreshToken in database as a user property
     const otherUsers = usersDB.users.filter(
