@@ -6,16 +6,16 @@ const usersDB = {
 };
 
 const jwt = require("jsonwebtoken");
-const { writeAccessTokenToCookie } = require("../lib/utils");
+const { writeAccessTokenToCookie, signAccessToken } = require("../lib/utils");
 require("dotenv").config();
 
 const handleRefreshToken = function (req, res) {
   const cookies = req.cookies;
-  if (!cookies?.jwt) {
+  if (!cookies?.["refresh-token"]) {
     return res.sendStatus(401);
   }
 
-  const refreshToken = cookies.jwt;
+  const refreshToken = cookies["refresh-token"];
 
   const foundUser = usersDB.users.find(
     (_user) => _user.refreshToken === refreshToken
@@ -32,16 +32,10 @@ const handleRefreshToken = function (req, res) {
     // const roles = Object.values(foundUser.roles);
     const foundUser_roleCode = Object.values(foundUser.role)[0];
 
-    const accessToken = jwt.sign(
-      {
-        UserInfo: {
-          username: foundUser.username,
-          role: foundUser_roleCode,
-        },
-      },
-      process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: process.env.ACCESS_TOKEN_DURATION }
-    );
+    const accessToken = signAccessToken({
+      username: foundUser.username,
+      role: foundUser_roleCode,
+    });
 
     writeAccessTokenToCookie({ res: res, accessToken: accessToken });
 
