@@ -1,7 +1,7 @@
 const ms = require("ms");
 
 function writeAccessTokenToCookie({ res, accessToken }) {
-  res.cookie("jwt-access", accessToken, {
+  res.cookie("access-token", accessToken, {
     httpOnly: true,
     sameSite: "None",
     secure: true,
@@ -10,7 +10,7 @@ function writeAccessTokenToCookie({ res, accessToken }) {
 }
 
 function writeRefreshTokenToCookie({ res, refreshToken }) {
-  res.cookie("jwt", refreshToken, {
+  res.cookie("refresh-token", refreshToken, {
     httpOnly: true,
     sameSite: "None",
     secure: true,
