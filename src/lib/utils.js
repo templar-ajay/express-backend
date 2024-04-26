@@ -29,7 +29,6 @@ const signAccessToken = ({ username, role }) =>
     },
     process.env.ACCESS_TOKEN_SECRET,
     {
-      algorithm: "RS256",
       expiresIn: process.env.ACCESS_TOKEN_DURATION,
     }
   );
