@@ -11,7 +11,8 @@ require("dotenv").config();
 
 const handleRefreshToken = function (req, res) {
   const cookies = req.cookies;
-  if (!cookies?.["refresh-token"]) {
+  if (!cookies["refresh-token"]) {
+    console.log("cookie refresh-token not found", cookies);
     return res.sendStatus(401);
   }
 
